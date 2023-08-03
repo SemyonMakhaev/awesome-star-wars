@@ -1,0 +1,50 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "18.0"
+    }
+  },
+  "extends": ["xo", "xo-react", "react-app"],
+  "plugins": ["ascii", "react", "react-hooks", "import", "@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": { "jsx": true },
+    "useJSXTextNode": true
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "import/extensions": 0,
+        "react/jsx-filename-extension": [2, { "extensions": [".tsx"] }],
+        "indent": ["error", 2],
+        "react/jsx-indent": ["error", 2],
+        "react/jsx-indent-props": ["error", 2],
+        "object-curly-spacing": ["error", "always"],
+        "react/jsx-tag-spacing": 0,
+        "capitalized-comments": 0,
+        "jsx-quotes": ["error", "prefer-double"]
+      }
+    },
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "globals": {
+        "test": "readonly",
+        "expect": "readonly"
+      }
+    }
+  ]
+}

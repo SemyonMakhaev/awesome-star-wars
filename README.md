@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Star wars explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
+
+```bash
+# switch to correct node version
+nvm use
+
+# install dependencies
+npm ci
+
+# (opt) install precommit hook
+npx husky install
+```
 
 ## Available Scripts
 
