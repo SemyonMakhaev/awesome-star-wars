@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useEffect, useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -9,7 +9,14 @@ import { Loader } from 'src/components/Loader';
 import { Card } from 'src/pages/People/components/Card';
 
 export function Items() {
-  const { people, isFetching, hasMore, fetchPeople } = usePeople();
+  const { ref, inView } = useInView();
+  const { people, hasMore, isFetching, fetchPeople } = usePeople();
+
+  useEffect(() => {
+    if (inView && hasMore) {
+      fetchPeople();
+    }
+  }, [inView, hasMore, fetchPeople, isFetching]);
 
   const items = useMemo(
     () =>
@@ -23,11 +30,7 @@ export function Items() {
     [people],
   );
 
-  if (people.length === 0) {
-    if (isFetching) {
-      return <Loader />;
-    }
-
+  if (people.length === 0 && !hasMore) {
     return (
       <Box
         display="flex"
@@ -42,17 +45,12 @@ export function Items() {
   }
 
   return (
-    <InfiniteScroll
-      dataLength={people.length}
-      next={fetchPeople}
-      hasMore={hasMore}
-      loader={<Loader />}
-    >
-      <Container sx={{ py: 8 }} maxWidth="md">
-        <Grid container spacing={4}>
-          {items}
-        </Grid>
-      </Container>
-    </InfiniteScroll>
+    <Container sx={{ py: 8 }} maxWidth="md">
+      <Grid container spacing={4}>
+        {items}
+      </Grid>
+      <Box ref={ref} sx={{ h: 1 }} />
+      {hasMore && isFetching && <Loader />}
+    </Container>
   );
 }

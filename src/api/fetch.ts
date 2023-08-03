@@ -9,7 +9,7 @@ const DEFAULT_HEADERS = {
   Accept: 'application/json',
 };
 
-const DEFAULT_TIMEOUT = 5000; // 5s
+const DEFAULT_TIMEOUT = 20_000; // 20s
 const RETRIES_COUNT = 3;
 
 axiosRetry(axios, {
