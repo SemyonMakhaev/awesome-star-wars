@@ -14,6 +14,6 @@ const selectLastFetchedPage = (state: AppState) => selectSlice(state).lastFetche
 
 /** Character */
 
-const selectIsCharacterFetching = (state: AppState) => selectSlice(state).isPeopleFetching;
+const selectIsCharacterFetching = (state: AppState) => selectSlice(state).isCharacterFetching;
 
 export const apiSelectors = { selectHasAvailablePeople, selectIsPeopleFetching, selectLastFetchedPage, selectIsCharacterFetching };
