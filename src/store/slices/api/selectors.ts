@@ -6,7 +6,8 @@ const selectSlice = (state: AppState) => state[apiSlice.name];
 
 /** People */
 
-const selectHasAvailablePeople = (order: string[]) => (state: AppState) => order.length === 0 || selectSlice(state).totalCount > order.length;
+const selectHasAvailablePeople = (order: string[]) => (state: AppState) =>
+  order.length === 0 || selectSlice(state).totalCount > order.length;
 
 const selectIsPeopleFetching = (state: AppState) => selectSlice(state).isPeopleFetching;
 
@@ -16,4 +17,9 @@ const selectLastFetchedPage = (state: AppState) => selectSlice(state).lastFetche
 
 const selectIsCharacterFetching = (state: AppState) => selectSlice(state).isCharacterFetching;
 
-export const apiSelectors = { selectHasAvailablePeople, selectIsPeopleFetching, selectLastFetchedPage, selectIsCharacterFetching };
+export const apiSelectors = {
+  selectHasAvailablePeople,
+  selectIsPeopleFetching,
+  selectLastFetchedPage,
+  selectIsCharacterFetching,
+};

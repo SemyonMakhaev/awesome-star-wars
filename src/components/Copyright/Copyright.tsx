@@ -9,8 +9,7 @@ export function Copyright() {
       <Link color="inherit" href="https://awesome-star-wars.vercel.app/">
         Star wars explorer
       </Link>{' '}
-      {new Date().getFullYear()}
-      .
+      {new Date().getFullYear()}.
     </Typography>
   );
 }

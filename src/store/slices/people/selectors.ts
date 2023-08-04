@@ -21,6 +21,9 @@ const selectPeople = (filter: string) => (state: AppState) => {
   return items.filter(item => item.name.toLowerCase().includes(lowerCaseFilter));
 };
 
-const selectCharacter = (id: string) => (state: AppState): Character | undefined => selectSlice(state).charactersMap[id];
+const selectCharacter
+  = (id: string) =>
+    (state: AppState): Character | undefined =>
+      selectSlice(state).charactersMap[id];
 
 export const peopleSelectors = { selectOrder, selectPeople, selectCharacter };

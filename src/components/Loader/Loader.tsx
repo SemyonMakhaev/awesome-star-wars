@@ -8,6 +8,7 @@ export function Loader() {
       display="flex"
       justifyContent="center"
       marginTop={8}
+      data-testid="loader"
     >
       <Spinner />
     </Box>

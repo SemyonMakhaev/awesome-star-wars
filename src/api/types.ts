@@ -16,7 +16,7 @@ export namespace Character {
     created: string; // '2014-12-09T13:50:51.644000Z'
     edited: string; // '2014-12-20T21:17:56.891000Z'
     url: string; // 'https://swapi.dev/api/people/1/'
-  }
+  };
 }
 
 export namespace People {
@@ -25,10 +25,10 @@ export namespace People {
     next: string | null; // 'https://swapi.dev/api/people/?page=2'
     previous: string | null; // null
     results: Array<Character.Response>;
-  }
+  };
   export type Query = {
     page: number;
-  }
+  };
 }
 
 export type Response = People.Response | Character.Response;

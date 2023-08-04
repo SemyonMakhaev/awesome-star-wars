@@ -1,12 +1,12 @@
 import { Component, ReactNode } from 'react';
 
 type ErrorBoundaryProps = {
-    readonly children: ReactNode;
-    readonly renderError: (error?: Error) => ReactNode;
+  readonly children: ReactNode;
+  readonly renderError: (error?: Error) => ReactNode;
 };
 
 type ErrorBoundaryState = {
-    error?: Error;
+  error?: Error;
 };
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

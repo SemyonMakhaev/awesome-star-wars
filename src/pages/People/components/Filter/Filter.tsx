@@ -9,20 +9,23 @@ import TextField from '@mui/material/TextField';
 export function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const onChange = useCallback(throttle((event: ChangeEvent<HTMLInputElement>) => {
-    const { value: name } = event.target;
+  const onChange = useCallback(
+    throttle((event: ChangeEvent<HTMLInputElement>) => {
+      const { value: name } = event.target;
 
-    const newSearchParams: Record<string, string> = name ? { name } : {};
+      const newSearchParams: Record<string, string> = name ? { name } : {};
 
-    setSearchParams(newSearchParams);
-  }, 100), [setSearchParams]);
+      setSearchParams(newSearchParams);
+    }, 100),
+    [setSearchParams],
+  );
 
   return (
     <TextField
       fullWidth
       id="filter-input"
       placeholder="Search for character"
-      value={searchParams.get('name')}
+      value={searchParams.get('name') ?? ''}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

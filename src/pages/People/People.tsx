@@ -13,6 +13,7 @@ export function PeoplePage() {
         variant="h2"
         align="center"
         color="text.primary"
+        data-testid="heading"
       >
         Star wars explorer
       </Typography>

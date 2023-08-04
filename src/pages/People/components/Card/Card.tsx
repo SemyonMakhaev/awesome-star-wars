@@ -19,17 +19,9 @@ export function Card({ characterId }: CardProps) {
   }
 
   return (
-    <MuiCard
-      sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-    >
+    <MuiCard sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h2"
-          textOverflow="ellipsis"
-          overflow="hidden"
-        >
+        <Typography gutterBottom variant="h5" component="h2" textOverflow="ellipsis" overflow="hidden">
           {character.name}
         </Typography>
       </CardContent>

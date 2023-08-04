@@ -19,9 +19,7 @@ export function MainLayout({ children, ...restProps }: PropsWithChildren) {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
-            {children}
-          </Container>
+          <Container maxWidth="sm">{children}</Container>
         </Box>
       </main>
       <Footer />

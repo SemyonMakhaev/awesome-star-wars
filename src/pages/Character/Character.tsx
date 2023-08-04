@@ -7,12 +7,8 @@ import { Info } from './components/Info';
 export function CharacterPage() {
   return (
     <>
-      <Link to="/">
-        <Box
-          display="flex"
-          alignItems="center"
-          sx={{ mb: 4 }}
-        >
+      <Link to="/" data-testid="back-link">
+        <Box display="flex" alignItems="center" sx={{ mb: 4 }}>
           <ArrowBack /> Back to list
         </Box>
       </Link>

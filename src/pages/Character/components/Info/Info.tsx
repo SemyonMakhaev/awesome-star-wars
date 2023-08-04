@@ -18,13 +18,16 @@ export function Info() {
 
   if (!character) {
     return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
+      <Box display="flex" justifyContent="center" alignItems="center">
         <AccessibilityNewIcon sx={{ mr: 1 }} />
-        <Typography paragraph variant="body2" color="text.secondary" align="center" sx={{ mb: 0 }}>
+        <Typography
+          paragraph
+          variant="body2"
+          color="text.secondary"
+          align="center"
+          sx={{ mb: 0 }}
+          data-testid="not-found-message"
+        >
           Character not found
         </Typography>
       </Box>
@@ -33,27 +36,28 @@ export function Info() {
 
   return (
     <>
-      <Typography gutterBottom variant="h2" component="h1">
+      <Typography gutterBottom variant="h2" component="h1" data-testid="character-name">
         {character.name}
       </Typography>
       <Stack spacing={2}>
         <div>
-          Gender: <Chip label={character.gender} color="info" />
+          Gender: <Chip label={character.gender} color="info" data-testid="character-gender" />
         </div>
         <div>
-          Height: <Chip label={character.height} variant="outlined" />
+          Height: <Chip label={character.height} variant="outlined" data-testid="character-height" />
         </div>
         <div>
-          Mass: <Chip label={character.height} variant="outlined" />
+          Mass: <Chip label={character.height} variant="outlined" data-testid="character-mass" />
         </div>
         <div>
-          Hair color: <Chip label={character.hairColor} variant="outlined" color="secondary" />
+          Hair color:{' '}
+          <Chip label={character.hairColor} variant="outlined" color="secondary" data-testid="character-hair" />
         </div>
         <div>
-          Eye color: <Chip label={character.eyeColor} variant="outlined" color="primary" />
+          Eye color: <Chip label={character.eyeColor} variant="outlined" color="primary" data-testid="character-eye" />
         </div>
         <div>
-          Skin color: <Chip label={character.skinColor} variant="outlined" color="info" />
+          Skin color: <Chip label={character.skinColor} variant="outlined" color="info" data-testid="character-skin" />
         </div>
       </Stack>
     </>

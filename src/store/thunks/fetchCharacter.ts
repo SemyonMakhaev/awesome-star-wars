@@ -6,32 +6,34 @@ import { apiSelectors } from 'src/store/slices/api/selectors';
 import { peopleActions } from 'src/store/slices/people/actions';
 import { peopleSelectors } from 'src/store/slices/people/selectors';
 
-export const fetchCharacterThunk = (id: string): AppThunkAction<void> => async (dispatch, getState) => {
-  const state = getState();
+export const fetchCharacterThunk
+  = (id: string): AppThunkAction<void> =>
+    async (dispatch, getState) => {
+      const state = getState();
 
-  const storedCharacter = peopleSelectors.selectCharacter(id)(state);
+      const storedCharacter = peopleSelectors.selectCharacter(id)(state);
 
-  const isCharacterFetching = apiSelectors.selectIsCharacterFetching(state);
+      const isCharacterFetching = apiSelectors.selectIsCharacterFetching(state);
 
-  if (storedCharacter || isCharacterFetching) {
-    return;
-  }
+      if (storedCharacter || isCharacterFetching) {
+        return;
+      }
 
-  dispatch(apiActions.setIsCharacterFetching(true));
+      dispatch(apiActions.setIsCharacterFetching(true));
 
-  const response = await fetchCharacter(id);
+      const response = await fetchCharacter(id);
 
-  dispatch(apiActions.setIsCharacterFetching(false));
+      dispatch(apiActions.setIsCharacterFetching(false));
 
-  if (!response) {
-    return;
-  }
+      if (!response) {
+        return;
+      }
 
-  const character = normalizeCharacter(response);
+      const character = normalizeCharacter(response);
 
-  if (!character) {
-    return;
-  }
+      if (!character) {
+        return;
+      }
 
-  dispatch(peopleActions.saveCharacter(character));
-};
+      dispatch(peopleActions.saveCharacter(character));
+    };

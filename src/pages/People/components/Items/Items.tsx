@@ -20,23 +20,17 @@ export function Items() {
 
   const items = useMemo(
     () =>
-      people.map(
-        character => (
-          <Grid key={character.id} item xs={12} sm={6} md={4}>
-            <Card characterId={character.id} />
-          </Grid>
-        ),
-      ),
+      people.map(character => (
+        <Grid key={character.id} item xs={12} sm={6} md={4}>
+          <Card characterId={character.id} />
+        </Grid>
+      )),
     [people],
   );
 
   if (people.length === 0 && !hasMore) {
     return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        marginTop={8}
-      >
+      <Box display="flex" justifyContent="center" marginTop={8}>
         <Typography paragraph variant="body2" color="text.secondary" align="center">
           No characters found
         </Typography>

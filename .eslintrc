@@ -26,7 +26,7 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", ".js", ".jsx"],
       "rules": {
         "import/extensions": 0,
         "react/jsx-filename-extension": [2, { "extensions": [".tsx"] }],
