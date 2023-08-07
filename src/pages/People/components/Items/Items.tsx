@@ -44,7 +44,7 @@ export function Items() {
         {items}
       </Grid>
       <Box ref={ref} sx={{ h: 1 }} />
-      {hasMore && isFetching && <Loader />}
+      {hasMore && isFetching && <Loader marginTop={8} />}
     </Container>
   );
 }

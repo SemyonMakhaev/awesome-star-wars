@@ -1,39 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
-import { Loader } from 'src/components/Loader';
-import { useCharacter } from 'src/hooks/useCharacter';
+import { Character } from 'src/types/character';
 
-export function Info() {
-  const { id } = useParams();
-  const { character, isFetching } = useCharacter(id ?? '');
+interface CharacterInfoProps {
+  readonly character: Character;
+}
 
-  if (isFetching) {
-    return <Loader />;
-  }
-
-  if (!character) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <AccessibilityNewIcon sx={{ mr: 1 }} />
-        <Typography
-          paragraph
-          variant="body2"
-          color="text.secondary"
-          align="center"
-          sx={{ mb: 0 }}
-          data-testid="not-found-message"
-        >
-          Character not found
-        </Typography>
-      </Box>
-    );
-  }
-
+export function CharacterInfo({ character }: CharacterInfoProps) {
   return (
     <>
       <Typography gutterBottom variant="h2" component="h1" data-testid="character-name">
@@ -47,17 +22,46 @@ export function Info() {
           Height: <Chip label={character.height} variant="outlined" data-testid="character-height" />
         </div>
         <div>
-          Mass: <Chip label={character.height} variant="outlined" data-testid="character-mass" />
+          Mass: <Chip label={character.mass} variant="outlined" data-testid="character-mass" />
         </div>
         <div>
           Hair color:{' '}
-          <Chip label={character.hairColor} variant="outlined" color="secondary" data-testid="character-hair" />
+          {character.hairColor.map(color => (
+            <Chip
+              key={`hair-color-${color}`}
+              sx={{ mr: 1, mb: 1 }}
+              label={color}
+              variant="outlined"
+              color="secondary"
+              data-testid="character-hair"
+            />
+          ))}
         </div>
         <div>
-          Eye color: <Chip label={character.eyeColor} variant="outlined" color="primary" data-testid="character-eye" />
+          Eye color:{' '}
+          {character.eyeColor.map(color => (
+            <Chip
+              key={`eye-color-${color}`}
+              sx={{ mr: 1, mb: 1 }}
+              label={color}
+              variant="outlined"
+              color="primary"
+              data-testid="character-eye"
+            />
+          ))}
         </div>
         <div>
-          Skin color: <Chip label={character.skinColor} variant="outlined" color="info" data-testid="character-skin" />
+          Skin color:{' '}
+          {character.skinColor.map(color => (
+            <Chip
+              key={`skin-color-${color}`}
+              sx={{ mr: 1, mb: 1 }}
+              label={color}
+              variant="outlined"
+              color="info"
+              data-testid="character-skin"
+            />
+          ))}
         </div>
       </Stack>
     </>

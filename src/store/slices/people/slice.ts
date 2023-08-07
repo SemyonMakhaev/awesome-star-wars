@@ -26,5 +26,18 @@ export default createSlice({
     builder.addCase(peopleActions.saveCharacter, (store, action) => {
       store.charactersMap[action.payload.id] = action.payload;
     });
+
+    builder.addCase(peopleActions.patchCharacter, (store, action) => {
+      const { id } = action.payload;
+
+      if (!store.charactersMap[id]) {
+        return;
+      }
+
+      store.charactersMap[id] = {
+        ...store.charactersMap[id],
+        ...action.payload,
+      };
+    });
   },
 });

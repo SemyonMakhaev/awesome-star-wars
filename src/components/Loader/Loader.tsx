@@ -1,14 +1,14 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 import Spinner from '@mui/material/CircularProgress';
 
-export function Loader() {
+export function Loader(props: BoxProps) {
   return (
     <Box
       display="flex"
       justifyContent="center"
-      marginTop={8}
       data-testid="loader"
+      {...props}
     >
       <Spinner />
     </Box>

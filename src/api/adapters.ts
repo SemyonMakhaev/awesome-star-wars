@@ -1,5 +1,5 @@
 import { Character as ApiCharacter } from 'src/api/types';
-import { Character } from 'src/types/character';
+import { Character, EyeColor, Gender, HairColor, SkinColor } from 'src/types/character';
 
 export function normalizeCharacter(character: ApiCharacter.Response): Character | undefined {
   const id = character.url.match(/\/([^/]+?)\/?$/)?.[1];
@@ -11,13 +11,13 @@ export function normalizeCharacter(character: ApiCharacter.Response): Character 
   return {
     id,
     name: character.name,
-    height: character.height,
-    mass: character.mass,
-    hairColor: character.hair_color,
-    skinColor: character.skin_color,
-    eyeColor: character.eye_color,
+    height: Number(character.height),
+    mass: Number(character.mass),
+    hairColor: character.hair_color.split(', ') as HairColor[],
+    skinColor: character.skin_color.split(', ') as SkinColor[],
+    eyeColor: character.eye_color.split(', ') as EyeColor[],
     birthYear: character.birth_year,
-    gender: character.gender,
+    gender: character.gender as Gender,
     homeworld: character.homeworld,
     films: character.films,
     species: character.species,

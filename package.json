@@ -23,6 +23,7 @@
     "@testing-library/user-event": "13.5.0",
     "axios": "1.4.0",
     "axios-retry": "3.6.0",
+    "formik": "2.4.3",
     "lodash.throttle": "4.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -90,7 +91,10 @@
     "moduleNameMapper": {
       "axios": "axios/dist/node/axios.cjs"
     },
-    "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!<rootDir>/node_modules/"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -99,6 +103,8 @@
         "statements": 90
       }
     },
-    "coverageReporters": ["text"]
+    "coverageReporters": [
+      "text"
+    ]
   }
 }

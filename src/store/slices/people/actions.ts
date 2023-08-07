@@ -7,4 +7,10 @@ const savePeople = createAction('people/savePeople', withPayload<Character[]>())
 
 const saveCharacter = createAction('people/saveCharacter', withPayload<Character>());
 
-export const peopleActions = { savePeople, saveCharacter };
+interface PatchCharacterActionPayload extends Partial<Omit<Character, 'id'>> {
+  id: string;
+}
+
+const patchCharacter = createAction('people/patchCharacter', withPayload<PatchCharacterActionPayload>());
+
+export const peopleActions = { savePeople, saveCharacter, patchCharacter };
